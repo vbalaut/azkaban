@@ -17,6 +17,8 @@
 /**
  * Place foundation classes in this sub-module.
  */
+ apply plugin: 'eclipse'
+ 
 task testJar(type: Jar, dependsOn: testClasses) {
     from sourceSets.test.output
     classifier = 'test'
