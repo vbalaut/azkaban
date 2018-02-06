@@ -39,6 +39,7 @@ buildScan {
 apply plugin: 'com.cinnober.gradle.semver-git'
 
 apply plugin: 'compare-gradle-builds'
+apply plugin: 'eclipse'
 
 compareGradleBuilds {
     targetBuild.gradleVersion = "4.0"

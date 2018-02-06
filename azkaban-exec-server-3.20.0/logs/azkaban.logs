@@ -1,0 +1,181 @@
+INFO main azkaban.execapp.AzkabanExecutorServer - Starting Jetty Azkaban Executor...
+ INFO main azkaban.server.AzkabanServer - Loading azkaban settings file from bin/../conf
+ INFO main azkaban.server.AzkabanServer - Loading azkaban properties file
+ INFO main azkaban.project.JdbcProjectImpl - project temporary folder is being constructed.
+ WARN main azkaban.storage.StorageCleaner - Project cleanup disabled. All artifacts will be stored.
+ INFO main azkaban.execapp.AzkabanExecServerModule - Event reporter is not enabled
+ INFO main azkaban.execapp.FlowRunnerManager - Execution dir retention set to 86400000 ms
+ INFO main azkaban.execapp.FlowRunnerManager - Creating subprocess to run shell command: chmod g+s executions
+ INFO main azkaban.execapp.FlowRunnerManager - useNewThreadPool: false
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning old execution dirs
+ INFO main azkaban.jobtype.JobTypeManager - Loading plugin default job types
+ INFO main org.mortbay.log - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+ INFO main org.mortbay.log - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+ DEBUG main org.mortbay.log - Container Server@1165b38 + SocketConnector@0.0.0.0:12321 as connector
+ DEBUG main org.mortbay.log - Container Server@1165b38 + SocketConnector@0.0.0.0:12321 as connector
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.thread.QueuedThreadPool@5542c4ed as threadpool
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.thread.QueuedThreadPool@5542c4ed as threadpool
+ INFO main azkaban.execapp.ExecJettyServerModule - Setting up connector with stats on: true
+ DEBUG main org.mortbay.log - Statistics on = true for SocketConnector@0.0.0.0:12321
+ DEBUG main org.mortbay.log - Statistics on = true for SocketConnector@0.0.0.0:12321
+ INFO main azkaban.execapp.ExecJettyServerModule - Jetty connector name: 0.0.0.0:12321, default header buffer size: 4096
+ INFO main azkaban.execapp.ExecJettyServerModule - Jetty connector name: 0.0.0.0:12321, (if) new header buffer size: 4096
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.jetty.servlet.Context@5dda768f{/,null} as handler
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.jetty.servlet.Context@5dda768f{/,null} as handler
+ DEBUG main org.mortbay.log - Container SessionHandler@7a8c8dcf + ServletHandler@24269709 as handler
+ DEBUG main org.mortbay.log - Container SessionHandler@7a8c8dcf + ServletHandler@24269709 as handler
+ DEBUG main org.mortbay.log - Container SessionHandler@7a8c8dcf + org.mortbay.jetty.servlet.HashSessionManager@2aceadd4 as sessionManager
+ DEBUG main org.mortbay.log - Container SessionHandler@7a8c8dcf + org.mortbay.jetty.servlet.HashSessionManager@2aceadd4 as sessionManager
+ DEBUG main org.mortbay.log - Container org.mortbay.jetty.servlet.Context@5dda768f{/,null} + SessionHandler@7a8c8dcf as handler
+ DEBUG main org.mortbay.log - Container org.mortbay.jetty.servlet.Context@5dda768f{/,null} + SessionHandler@7a8c8dcf as handler
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.ExecutorServlet-1583159071 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.ExecutorServlet-1583159071 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.ExecutorServlet-1583159071,[/executor]) as servletMapping
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.ExecutorServlet-1583159071,[/executor]) as servletMapping
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletPathMap={/executor=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletPathMap={/executor=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.JMXHttpServlet-1644231115 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.JMXHttpServlet-1644231115 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.JMXHttpServlet-1644231115,[/jmx]) as servletMapping
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.JMXHttpServlet-1644231115,[/jmx]) as servletMapping
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.StatsServlet-2109798150 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.StatsServlet-2109798150 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.StatsServlet-2109798150,[/stats]) as servletMapping
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.StatsServlet-2109798150,[/stats]) as servletMapping
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071}
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.ServerStatisticsServlet-1233705144 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + azkaban.execapp.ServerStatisticsServlet-1233705144 as servlet
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.ServerStatisticsServlet-1233705144,[/serverStatistics]) as servletMapping
+ DEBUG main org.mortbay.log - Container ServletHandler@24269709 + (S=azkaban.execapp.ServerStatisticsServlet-1233705144,[/serverStatistics]) as servletMapping
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /serverStatistics=azkaban.execapp.ServerStatisticsServlet-1233705144, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /serverStatistics=azkaban.execapp.ServerStatisticsServlet-1233705144, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071, azkaban.execapp.ServerStatisticsServlet-1233705144=azkaban.execapp.ServerStatisticsServlet-1233705144}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071, azkaban.execapp.ServerStatisticsServlet-1233705144=azkaban.execapp.ServerStatisticsServlet-1233705144}
+ INFO main azkaban.execapp.jmx.JmxJobMBeanManager - Initializing azkaban.execapp.jmx.JmxJobMBeanManager
+ INFO main azkaban.execapp.AzkabanExecutorServer - Job callback enabled? true
+ INFO main azkaban.execapp.event.JobCallbackManager - Initializing
+ INFO main azkaban.execapp.event.JobCallbackRequestMaker - responseWaitTimeoutMS: 5000
+ INFO main azkaban.execapp.event.JobCallbackRequestMaker - Global request configuration [expectContinueEnabled=false, proxy=null, localAddress=null, cookieSpec=null, redirectsEnabled=true, relativeRedirectsAllowed=true, maxRedirects=50, circularRedirectsAllowed=false, authenticationEnabled=true, targetPreferredAuthSchemes=null, proxyPreferredAuthSchemes=null, connectionRequestTimeout=3000, connectTimeout=3000, socketTimeout=3000, contentCompressionEnabled=true]
+ INFO main azkaban.execapp.event.JobCallbackRequestMaker - Jobcall thread pool size: 10
+ INFO main azkaban.execapp.event.JobCallbackRequestMaker - Initialization for azkaban.execapp.event.JobCallbackRequestMaker is completed
+ INFO main azkaban.execapp.event.JobCallbackManager - Initialization completed azkaban.execapp.event.JobCallbackManager
+ INFO main azkaban.execapp.event.JobCallbackManager - azkabanHostName jenkins.datametica.com
+ INFO main azkaban.execapp.AzkabanExecutorServer - Registering MBeans...
+ INFO main azkaban.execapp.AzkabanExecutorServer - Bean azkaban.jmx.JmxJettyServer registered.
+ INFO main azkaban.execapp.AzkabanExecutorServer - Bean azkaban.execapp.jmx.JmxFlowRunnerManager registered.
+ INFO main azkaban.execapp.AzkabanExecutorServer - Bean azkaban.execapp.jmx.JmxJobMBeanManager registered.
+ INFO main azkaban.execapp.AzkabanExecutorServer - Bean azkaban.execapp.jmx.JmxJobCallback registered.
+ INFO main azkaban.execapp.AzkabanExecutorServer - No value for property: jmx.attribute.processor.class was found
+ INFO main org.mortbay.log - jetty-6.1.26
+ INFO main org.mortbay.log - jetty-6.1.26
+ DEBUG main org.mortbay.log - started org.mortbay.thread.QueuedThreadPool@5542c4ed
+ DEBUG main org.mortbay.log - started org.mortbay.thread.QueuedThreadPool@5542c4ed
+ DEBUG main org.mortbay.log - Container org.mortbay.jetty.servlet.Context@5dda768f{/,null} + ErrorHandler@4082ba93 as errorHandler
+ DEBUG main org.mortbay.log - Container org.mortbay.jetty.servlet.Context@5dda768f{/,null} + ErrorHandler@4082ba93 as errorHandler
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.jetty.servlet.HashSessionIdManager@609e8838 as sessionIdManager
+ DEBUG main org.mortbay.log - Container Server@1165b38 + org.mortbay.jetty.servlet.HashSessionIdManager@609e8838 as sessionIdManager
+ DEBUG main org.mortbay.log - Init SecureRandom.
+ DEBUG main org.mortbay.log - Init SecureRandom.
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.HashSessionIdManager@609e8838
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.HashSessionIdManager@609e8838
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.HashSessionManager@2aceadd4
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.HashSessionManager@2aceadd4
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - filterNameMap=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - pathFilters=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletFilterMap=null
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /serverStatistics=azkaban.execapp.ServerStatisticsServlet-1233705144, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletPathMap={/jmx=azkaban.execapp.JMXHttpServlet-1644231115, /executor=azkaban.execapp.ExecutorServlet-1583159071, /serverStatistics=azkaban.execapp.ServerStatisticsServlet-1233705144, /stats=azkaban.execapp.StatsServlet-2109798150}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071, azkaban.execapp.ServerStatisticsServlet-1233705144=azkaban.execapp.ServerStatisticsServlet-1233705144}
+ DEBUG main org.mortbay.log - servletNameMap={azkaban.execapp.JMXHttpServlet-1644231115=azkaban.execapp.JMXHttpServlet-1644231115, azkaban.execapp.StatsServlet-2109798150=azkaban.execapp.StatsServlet-2109798150, azkaban.execapp.ExecutorServlet-1583159071=azkaban.execapp.ExecutorServlet-1583159071, azkaban.execapp.ServerStatisticsServlet-1233705144=azkaban.execapp.ServerStatisticsServlet-1233705144}
+ DEBUG main org.mortbay.log - starting ServletHandler@24269709
+ DEBUG main org.mortbay.log - starting ServletHandler@24269709
+ DEBUG main org.mortbay.log - started ServletHandler@24269709
+ DEBUG main org.mortbay.log - started ServletHandler@24269709
+ DEBUG main org.mortbay.log - starting SessionHandler@7a8c8dcf
+ DEBUG main org.mortbay.log - starting SessionHandler@7a8c8dcf
+ DEBUG main org.mortbay.log - started SessionHandler@7a8c8dcf
+ DEBUG main org.mortbay.log - started SessionHandler@7a8c8dcf
+ DEBUG main org.mortbay.log - starting org.mortbay.jetty.servlet.Context@5dda768f{/,null}
+ DEBUG main org.mortbay.log - starting org.mortbay.jetty.servlet.Context@5dda768f{/,null}
+ DEBUG main org.mortbay.log - starting ErrorHandler@4082ba93
+ DEBUG main org.mortbay.log - starting ErrorHandler@4082ba93
+ DEBUG main org.mortbay.log - started ErrorHandler@4082ba93
+ DEBUG main org.mortbay.log - started ErrorHandler@4082ba93
+ DEBUG main org.mortbay.log - started azkaban.execapp.ExecutorServlet-1583159071
+ DEBUG main org.mortbay.log - started azkaban.execapp.ExecutorServlet-1583159071
+ DEBUG main org.mortbay.log - started azkaban.execapp.JMXHttpServlet-1644231115
+ DEBUG main org.mortbay.log - started azkaban.execapp.JMXHttpServlet-1644231115
+ DEBUG main org.mortbay.log - started azkaban.execapp.ServerStatisticsServlet-1233705144
+ DEBUG main org.mortbay.log - started azkaban.execapp.ServerStatisticsServlet-1233705144
+ DEBUG main org.mortbay.log - started azkaban.execapp.StatsServlet-2109798150
+ DEBUG main org.mortbay.log - started azkaban.execapp.StatsServlet-2109798150
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.Context@5dda768f{/,null}
+ DEBUG main org.mortbay.log - started org.mortbay.jetty.servlet.Context@5dda768f{/,null}
+ DEBUG main org.mortbay.log - starting Server@1165b38
+ DEBUG main org.mortbay.log - starting Server@1165b38
+ INFO main org.mortbay.log - Started SocketConnector@0.0.0.0:12321
+ INFO main org.mortbay.log - Started SocketConnector@0.0.0.0:12321
+ DEBUG main org.mortbay.log - started SocketConnector@0.0.0.0:12321
+ DEBUG main org.mortbay.log - started SocketConnector@0.0.0.0:12321
+ DEBUG main org.mortbay.log - started Server@1165b38
+ DEBUG main org.mortbay.log - started Server@1165b38
+ ERROR main azkaban.db.MySQLDataSource - Connetion String is 2029680286, URL=jdbc:mysql://10.200.99.205:3306/azkaban, UserName=azkaban@jenkins.datametica.com, MySQL Connector Java
+ ERROR main azkaban.db.MySQLDataSource - Connetion String is 1408482749, URL=jdbc:mysql://10.200.99.205:3306/azkaban, UserName=azkaban@jenkins.datametica.com, MySQL Connector Java
+ ERROR main azkaban.db.MySQLDataSource - Connetion String is 1921242091, URL=jdbc:mysql://10.200.99.205:3306/azkaban, UserName=azkaban@jenkins.datametica.com, MySQL Connector Java
+ ERROR main azkaban.db.MySQLDataSource - Connetion String is 418179060, URL=jdbc:mysql://10.200.99.205:3306/azkaban, UserName=azkaban@jenkins.datametica.com, MySQL Connector Java
+ INFO main azkaban.execapp.AzkabanExecutorServer - Started Executor Server on jenkins.datametica.com:12321
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - Cleaning recently finished
+ INFO FlowRunnerManager-Cleaner-Thread azkaban.execapp.FlowRunnerManager - # of executing flows: 0
+ 

@@ -73,7 +73,7 @@ public class ExecutionFlowDao {
       flow.setExecutionId((int) id);
       updateExecutableFlow(flow);
     } catch (final SQLException e) {
-      throw new ExecutorManagerException("Error creating execution.", e);
+      throw new ExecutorManagerException(e.toString());
     }
   }
 

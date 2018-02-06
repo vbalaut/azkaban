@@ -47,10 +47,10 @@ class JdbcProjectHandlerSet {
         "SELECT id, name, active, modified_time, create_time, version, last_modified_by, description, enc_type, settings_blob FROM projects WHERE id=?";
 
     public static String SELECT_ALL_ACTIVE_PROJECTS =
-        "SELECT id, name, active, modified_time, create_time, version, last_modified_by, description, enc_type, settings_blob FROM projects WHERE active=true";
+        "SELECT id, name, active, modified_time, create_time, version, last_modified_by, description, enc_type, settings_blob FROM projects WHERE active=1";
 
     public static String SELECT_ACTIVE_PROJECT_BY_NAME =
-        "SELECT id, name, active, modified_time, create_time, version, last_modified_by, description, enc_type, settings_blob FROM projects WHERE name=? AND active=true";
+        "SELECT id, name, active, modified_time, create_time, version, last_modified_by, description, enc_type, settings_blob FROM projects WHERE name=? AND active=1";
 
     @Override
     public List<Project> handle(final ResultSet rs) throws SQLException {
@@ -62,7 +62,7 @@ class JdbcProjectHandlerSet {
       do {
         final int id = rs.getInt(1);
         final String name = rs.getString(2);
-        final boolean active = rs.getBoolean(3);
+        final boolean active = rs.getBoolean(1);
         final long modifiedTime = rs.getLong(4);
         final long createTime = rs.getLong(5);
         final int version = rs.getInt(6);

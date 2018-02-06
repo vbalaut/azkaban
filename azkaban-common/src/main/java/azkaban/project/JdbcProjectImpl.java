@@ -172,9 +172,8 @@ public class JdbcProjectImpl implements ProjectLoader {
         }
       }
     } catch (final SQLException ex) {
-      logger.error(ProjectResultHandler.SELECT_ACTIVE_PROJECT_BY_NAME + " failed.", ex);
-      throw new ProjectManagerException(
-          ProjectResultHandler.SELECT_ACTIVE_PROJECT_BY_NAME + " failed.", ex);
+      logger.error(ex.toString());
+      throw new ProjectManagerException(ex.toString());
     }
     return project;
   }
@@ -212,7 +211,7 @@ public class JdbcProjectImpl implements ProjectLoader {
     // Check if the same project name exists.
     try {
       final List<Project> projects = this.dbOperator
-          .query(ProjectResultHandler.SELECT_ACTIVE_PROJECT_BY_NAME, handler, name);
+          .query(ProjectResultHandler.SELECT_ACTIVE_PROJECT_BY_NAME, handler, NumeralString(name));
       if (!projects.isEmpty()) {
         throw new ProjectManagerException(
             "Active project with name " + name + " already exists in db.");
@@ -227,7 +226,7 @@ public class JdbcProjectImpl implements ProjectLoader {
     final SQLTransaction<Integer> insertProject = transOperator -> {
       final long time = System.currentTimeMillis();
       return transOperator
-          .update(INSERT_PROJECT, name, true, time, time, null, creator.getUserId(), description,
+          .update(INSERT_PROJECT, NumeralString(name), true, time, time, null, creator.getUserId(), description,
               this.defaultEncodingType.getNumVal(), null);
     };
 
@@ -379,7 +378,7 @@ public class JdbcProjectImpl implements ProjectLoader {
     // Really... I doubt we'll get a > 2gig file. So int casting it is!
     final byte[] buffer = new byte[CHUCK_SIZE];
     final String INSERT_PROJECT_FILES =
-        "INSERT INTO project_files (project_id, version, chunk, size, file) values (?,?,?,?,?)";
+        "INSERT INTO project_files (project_id, version, chunk, size1, file1) values (?,?,?,?,?)";
 
     BufferedInputStream bufferedStream = null;
     int chunk = 0;
@@ -406,7 +405,7 @@ public class JdbcProjectImpl implements ProjectLoader {
           transOperator.getConnection().commit();
           logger.info("Finished update for " + localFile.getName() + " chunk " + chunk);
         } catch (final SQLException e) {
-          throw new ProjectManagerException("Error Chunking during uploading files to db...");
+          throw new ProjectManagerException(e.toString());
         }
         ++chunk;
         size = bufferedStream.read(buffer);
@@ -436,9 +435,8 @@ public class JdbcProjectImpl implements ProjectLoader {
       transOperator.update(UPDATE_PROJECT_NUM_CHUNKS, chunk, projectId, version);
       transOperator.getConnection().commit();
     } catch (final SQLException e) {
-      logger.error("Error updating project " + projectId + " : chunk_num " + chunk, e);
-      throw new ProjectManagerException(
-          "Error updating project " + projectId + " : chunk_num " + chunk, e);
+      logger.error(e.toString());
+      throw new ProjectManagerException(e.toString());
     }
   }
 
@@ -549,6 +547,35 @@ public class JdbcProjectImpl implements ProjectLoader {
           "Error updating switching project version " + project.getName(), e);
     }
   }
+       
+
+
+         public static String toNumeralString(final Boolean isGroup)
+          {
+
+          String s;
+            if (isGroup == null) 
+            {
+              return "null";
+            } else {
+               s=isGroup.booleanValue() ? "1" : "0";
+              }
+              s="'"+s+"'";
+              return s;
+           }
+
+         public static String NumeralString(final String name)
+       {
+         String st="'"+name+"'";
+          return st;
+        }
+
+
+
+
+
+
+
 
   @Override
   public void updatePermission(final Project project, final String name, final Permission perm,
@@ -557,24 +584,27 @@ public class JdbcProjectImpl implements ProjectLoader {
 
     final long updateTime = System.currentTimeMillis();
     try {
-      if (this.dbOperator.getDataSource().allowsOnDuplicateKey()) {
+         
+ 
+
+
+         if (this.dbOperator.getDataSource().allowsOnDuplicateKey()) {
         final String INSERT_PROJECT_PERMISSION =
             "INSERT INTO project_permissions (project_id, modified_time, name, permissions, isGroup) values (?,?,?,?,?)"
                 + "ON DUPLICATE KEY UPDATE modified_time = VALUES(modified_time), permissions = VALUES(permissions)";
         this.dbOperator
-            .update(INSERT_PROJECT_PERMISSION, project.getId(), updateTime, name, perm.toFlags(),
-                isGroup);
+            .update(INSERT_PROJECT_PERMISSION, project.getId(), updateTime,NumeralString(name), perm.toFlags(),
+                 toNumeralString(isGroup));
       } else {
         final String MERGE_PROJECT_PERMISSION =
             "MERGE INTO project_permissions (project_id, modified_time, name, permissions, isGroup) KEY (project_id, name) values (?,?,?,?,?)";
         this.dbOperator
-            .update(MERGE_PROJECT_PERMISSION, project.getId(), updateTime, name, perm.toFlags(),
-                isGroup);
+            .update(MERGE_PROJECT_PERMISSION, project.getId(), updateTime, NumeralString(name), perm.toFlags(),
+                 toNumeralString(isGroup));
       }
     } catch (final SQLException ex) {
-      logger.error("Error updating project permission", ex);
-      throw new ProjectManagerException(
-          "Error updating project " + project.getName() + " permissions for " + name, ex);
+      logger.error(ex.toString());
+      throw new ProjectManagerException(ex.toString());
     }
 
     if (isGroup) {
@@ -655,12 +685,12 @@ public class JdbcProjectImpl implements ProjectLoader {
 
     final long updateTime = System.currentTimeMillis();
     final String UPDATE_INACTIVE_PROJECT =
-        "UPDATE projects SET active=false,modified_time=?,last_modified_by=? WHERE id=?";
+        "UPDATE projects SET active='0',modified_time=?,last_modified_by=? WHERE id=?";
     try {
       this.dbOperator.update(UPDATE_INACTIVE_PROJECT, updateTime, user, project.getId());
     } catch (final SQLException e) {
       logger.error("error remove project " + project.getName(), e);
-      throw new ProjectManagerException("Error remove project " + project.getName(), e);
+      throw new ProjectManagerException(e.toString());
     }
   }
 
@@ -969,7 +999,7 @@ public class JdbcProjectImpl implements ProjectLoader {
       }
     } catch (final SQLException e) {
       logger.error("clean older project transaction failed", e);
-      throw new ProjectManagerException("clean older project transaction failed", e);
+      throw new ProjectManagerException(e.toString());
     }
   }
 

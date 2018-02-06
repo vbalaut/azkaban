@@ -112,10 +112,13 @@ public class DataSourceUtils {
         final String user, final String password, final int numConnections) {
       super();
 
-      this.url = "jdbc:mysql://" + (host + ":" + port + "/" + dbName);
+      this.url = "jdbc:oracle:thin:@10.200.99.217:1521:orcl";
+      //this.String url = "jdbc:oracle:thin:@" + (host + ":" + port + "/" + dbName);
+      //this.url = "jdbc:mysql://" + (host + ":" + port + "/" + dbName);
       addConnectionProperty("useUnicode", "yes");
       addConnectionProperty("characterEncoding", "UTF-8");
-      setDriverClassName("com.mysql.jdbc.Driver");
+     // setDriverClassName("com.mysql.jdbc.Driver");
+      setDriverClassName("oracle.jdbc.driver.OracleDriver"); 
       setUsername(user);
       setPassword(password);
       setUrl(this.url);

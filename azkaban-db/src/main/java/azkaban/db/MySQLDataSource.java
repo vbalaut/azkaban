@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 LinkedIn Corp.
+  * Copyright 2017 LinkedIn Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,7 +14,8 @@
  * the License.
  */
 package azkaban.db;
-
+import java.sql.*;
+import java.sql.DriverManager;
 import azkaban.utils.Props;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +25,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
-
 @Singleton
 public class MySQLDataSource extends AzkabanDataSource {
 
@@ -43,10 +43,13 @@ public class MySQLDataSource extends AzkabanDataSource {
     final String password = props.getString("mysql.password");
     final int numConnections = props.getInt("mysql.numconnections");
 
-    final String url = "jdbc:mysql://" + (host + ":" + port + "/" + dbName);
+
+    final String url = "jdbc:oracle:thin:@" + (host + ":" + port + ":" + dbName);
+   //final String url = "jdbc:mysql://" + (host + ":" + port + "/" + dbName);
     addConnectionProperty("useUnicode", "yes");
     addConnectionProperty("characterEncoding", "UTF-8");
-    setDriverClassName("com.mysql.jdbc.Driver");
+    //setDriverClassName("com.mysql.jdbc.Driver");
+    setDriverClassName("oracle.jdbc.driver.OracleDriver");
     setUsername(user);
     setPassword(password);
     setUrl(url);
@@ -65,51 +68,7 @@ public class MySQLDataSource extends AzkabanDataSource {
     final long startMs = System.currentTimeMillis();
     Connection connection = null;
     int retryAttempt = 1;
-    while (retryAttempt < AzDBUtil.MAX_DB_RETRY_COUNT) {
-      try {
-        /**
-         * when DB connection could not be fetched (e.g., network issue), or connection can not be validated,
-         * {@link BasicDataSource} throws a SQL Exception. {@link BasicDataSource#dataSource} will be reset to null.
-         * createDataSource() will create a new dataSource.
-         * Every Attempt generates a thread-hanging-time, about 75 seconds, which is hard coded, and can not be changed.
-         */
-        connection = createDataSource().getConnection();
-
-        /**
-         * If connection is null or connection is read only, retry to find available connection.
-         * When DB fails over from master to slave, master is set to read-only mode. We must keep
-         * finding correct data source and sql connection.
-         */
-        if (connection == null || isReadOnly(connection)) {
-          throw new SQLException("Failed to find DB connection Or connection is read only. ");
-        } else {
-
-          // Evalaute how long it takes to get DB Connection.
-          this.dbMetrics.setDBConnectionTime(System.currentTimeMillis() - startMs);
-          return connection;
-        }
-      } catch (final SQLException ex) {
-
-        /**
-         * invalidate connection and reconstruct it later. if remote IP address is not reachable,
-         * it will get hang for a while and throw exception.
-         */
-        this.dbMetrics.markDBFailConnection();
-        try {
-          invalidateConnection(connection);
-        } catch (final Exception e) {
-          logger.error( "can not invalidate connection.", e);
-        }
-        logger.error( "Failed to find write-enabled DB connection. Wait 15 seconds and retry."
-            + " No.Attempt = " + retryAttempt, ex);
-        /**
-         * When database is completed down, DB connection fails to be fetched immediately. So we need
-         * to sleep 15 seconds for retry.
-         */
-        sleep(1000L * 15);
-        retryAttempt++;
-      }
-    }
+    connection = DriverManager.getConnection("jdbc:oracle:thin:@10.200.99.217:1521:orcl","nihar_test","nihar_test");
     return connection;
   }
 
@@ -141,3 +100,4 @@ public class MySQLDataSource extends AzkabanDataSource {
     return true;
   }
 }
+

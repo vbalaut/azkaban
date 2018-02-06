@@ -1,0 +1,74 @@
+INFO main azkaban.webapp.AzkabanWebServer - Starting Jetty Azkaban Web Server...
+ INFO main azkaban.webapp.AzkabanWebServer - Starting Jetty Azkaban Web Server...
+ INFO main azkaban.server.AzkabanServer - Loading azkaban settings file from bin/../bin/../conf
+ INFO main azkaban.server.AzkabanServer - Loading azkaban properties file
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up connector with stats on: true
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up connector with stats on: true
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up Jetty Https Server with port:8443 and numThreads:25
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up Jetty Https Server with port:8443 and numThreads:25
+ INFO main azkaban.webapp.AzkabanWebServer - Excluded Cipher Suites: []
+ INFO main azkaban.webapp.AzkabanWebServer - Excluded Cipher Suites: []
+ ERROR main azkaban.utils.StdOutErrRedirect - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+ ERROR main azkaban.utils.StdOutErrRedirect - SLF4J: Defaulting to no-operation (NOP) logger implementation
+ ERROR main azkaban.utils.StdOutErrRedirect - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+ INFO main azkaban.webapp.AzkabanWebServer - Loading user manager class azkaban.user.XmlUserManager
+ INFO main azkaban.webapp.AzkabanWebServer - Loading user manager class azkaban.user.XmlUserManager
+ INFO main azkaban.user.XmlUserManager - Loading user azkaban
+ INFO main azkaban.user.XmlUserManager - Loading user metrics
+ INFO main azkaban.executor.ExecutorManager - Initializing local executor 10.200.99.205:12321
+ INFO main azkaban.webapp.AzkabanWebServer - Loading JDBC for project management
+ INFO main azkaban.webapp.AzkabanWebServer - Loading JDBC for project management
+ INFO AzkabanWebServer-Cleaner-Thread azkaban.executor.ExecutorManager - Cleaning old logs from execution_logs
+ INFO main azkaban.project.ProjectManager - Project version retention is set to 3
+ WARN main azkaban.project.validator.XmlValidatorManager - Validator directory validators does not exist or is not a directory.
+ WARN main azkaban.project.validator.XmlValidatorManager - Azkaban properties file does not contain the key project.validators.xml.file
+ INFO AzkabanWebServer-Cleaner-Thread azkaban.executor.ExecutorManager - Cleaning old log files before 2017-11-07T06:25:44.558Z
+ INFO AzkabanWebServer-Cleaner-Thread azkaban.executor.ExecutorManager - Cleaned up 0 log entries.
+ INFO AzkabanWebServer-Cleaner-Thread azkaban.executor.ExecutorManager - log clean up time: 0 seconds.
+ INFO main azkaban.trigger.TriggerManager - TriggerManager loaded.
+ INFO main azkaban.webapp.AzkabanWebServer - Loading built-in checker and action types
+ INFO main azkaban.webapp.AzkabanWebServer - Loading built-in checker and action types
+ INFO main azkaban.trigger.CheckerTypeLoader - Registering checker BasicTimeChecker
+ INFO main azkaban.trigger.CheckerTypeLoader - Registering checker SlaChecker
+ INFO main azkaban.trigger.CheckerTypeLoader - Registering checker ExecutionChecker
+ INFO main azkaban.trigger.ActionTypeLoader - Registering action ExecuteFlowAction
+ INFO main azkaban.trigger.ActionTypeLoader - Registering action KillExecutionAction
+ INFO main azkaban.trigger.ActionTypeLoader - Registering action AlertAction
+ INFO main azkaban.trigger.ActionTypeLoader - Registering action CreateTriggerAction
+ INFO main azkaban.webapp.AzkabanWebServer - Loading trigger based scheduler
+ INFO main azkaban.webapp.AzkabanWebServer - Loading trigger based scheduler
+ INFO main azkaban.webapp.AzkabanWebServer - Loading plug-in checker and action types
+ INFO main azkaban.webapp.AzkabanWebServer - Loading plug-in checker and action types
+ ERROR main azkaban.webapp.AzkabanWebServer - plugin path plugins/triggers doesn't exist!
+ ERROR main azkaban.webapp.AzkabanWebServer - plugin path plugins/triggers doesn't exist!
+ INFO main azkaban.webapp.AzkabanWebServer - Registering MBeans...
+ INFO main azkaban.webapp.AzkabanWebServer - Registering MBeans...
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxJettyServer registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxJettyServer registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxTriggerManager registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxTriggerManager registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxExecutorManager registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean azkaban.jmx.JmxExecutorManager registered.
+ DEBUG main org.apache.log4j.jmx.HierarchyDynamicMBean - preRegister called. Server=com.sun.jmx.mbeanserver.JmxMBeanServer@66d3c617, name=org.apache.log4j.jmx.HierarchyDynamicMBean:name=log4jmxbean
+ DEBUG main org.apache.log4j.jmx.HierarchyDynamicMBean - postRegister is called.
+ DEBUG main root - preRegister called. Server=com.sun.jmx.mbeanserver.JmxMBeanServer@66d3c617, name=log4j:logger=root
+ DEBUG main org.apache.log4j.jmx.LoggerDynamicMBean - Adding AppenderMBean for appender named RFILE
+ DEBUG main org.apache.log4j.jmx.AppenderDynamicMBean - getMBeanInfo called.
+ DEBUG main org.apache.log4j.jmx.AppenderDynamicMBean - preRegister called. Server=com.sun.jmx.mbeanserver.JmxMBeanServer@66d3c617, name=log4j:appender=RFILE
+ DEBUG main org.apache.log4j.jmx.AppenderDynamicMBean - Adding LayoutMBean:RFILE,layout=org.apache.log4j.PatternLayout
+ DEBUG main org.apache.log4j.jmx.LayoutDynamicMBean - getMBeanInfo called.
+ DEBUG main org.apache.log4j.jmx.LayoutDynamicMBean - preRegister called. Server=com.sun.jmx.mbeanserver.JmxMBeanServer@66d3c617, name=log4j:appender=RFILE,layout=org.apache.log4j.PatternLayout
+ DEBUG main org.apache.log4j.jmx.HierarchyDynamicMBean - ---Adding logger [root] as listener.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean org.apache.log4j.jmx.HierarchyDynamicMBean registered.
+ INFO main azkaban.webapp.AzkabanWebServer - Bean org.apache.log4j.jmx.HierarchyDynamicMBean registered.
+ INFO main azkaban.utils.StdOutErrRedirect - ************* loginLoggerObjName is null, make sure there is a logger with name azkaban.webapp.servlet.LoginAbstractAzkabanServlet
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up web resource dir web/
+ INFO main azkaban.webapp.AzkabanWebServer - Setting up web resource dir web/
+ INFO main azkaban.trigger.JdbcTriggerLoader - Loading all triggers from db.
+ INFO main azkaban.trigger.JdbcTriggerLoader - Loaded 0 triggers.
+ INFO main azkaban.webapp.servlet.ProjectManagerServlet - downloadBufferSize: 8192
+ INFO main azkaban.webapp.servlet.ProjectManagerServlet - downloadBufferSize: 8192
+ WARN main azkaban.webapp.AzkabanWebServer - java.net.BindException: Address already in use (Bind failed)
+ WARN main azkaban.webapp.AzkabanWebServer - java.net.BindException: Address already in use (Bind failed)
+ ERROR main azkaban.utils.StdOutErrRedirect - Address already in use (Bind failed)
+ 
