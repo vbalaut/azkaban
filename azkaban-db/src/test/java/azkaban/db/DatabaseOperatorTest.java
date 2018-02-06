@@ -75,7 +75,7 @@ public class DatabaseOperatorTest {
 
     //If typos, throw Exceptions.
     doThrow(SQLException.class).when(this.queryRunner)
-        .query("sele * from blah where ? = ?", this.handler, "id", 2);
+        .query("select * from blah where ? = ?", this.handler, "id", 2);
 
     doAnswer(invocation -> {
       index_1 = 26;
@@ -99,7 +99,7 @@ public class DatabaseOperatorTest {
   @Test(expected = SQLException.class)
   public void testTypoSqlStatement() throws Exception {
     System.out.println("testTypoSqlStatement");
-    this.dbOperator.query("sele * from blah where ? = ?", this.handler, "id", 2);
+    this.dbOperator.query("select * from blah where ? = ?", this.handler, "id", 2);
   }
 
   @Test

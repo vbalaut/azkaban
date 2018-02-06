@@ -15,6 +15,7 @@
  *
  */
 apply plugin: 'distribution'
+apply plugin: 'eclipse'
 
 task testJar(type: Jar, dependsOn: testClasses) {
     from sourceSets.test.output

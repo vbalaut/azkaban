@@ -136,7 +136,7 @@ class AzkabanProjectLoader {
             + archive.getName());
       }
     } catch (final IOException e) {
-      throw new ProjectManagerException("Error unzipping file.", e);
+      throw new ProjectManagerException(e.toString());
     }
     return file;
   }

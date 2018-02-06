@@ -17,25 +17,21 @@
 package azkaban.project;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.io.Serializable;
 import java.time.Duration;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * FlowTrigger is the logical representation of a trigger.
  * It couldn't be changed once gets constructed.
  * It will be used to create running trigger instance.
  */
-public class FlowTrigger implements Serializable {
+public class FlowTrigger {
 
-  private final Map<String, FlowTriggerDependency> dependencies;
+  private final List<FlowTriggerDependency> dependencies;
   private final CronSchedule schedule;
   private final Duration maxWaitDuration;
 
@@ -43,18 +39,15 @@ public class FlowTrigger implements Serializable {
    * @throws IllegalArgumentException if any of the argument is null or there is duplicate
    * dependency name or duplicate dependency type and params
    */
-  public FlowTrigger(final CronSchedule schedule, final List<FlowTriggerDependency> dependencies,
-      final Duration maxWaitDuration) {
-    Preconditions.checkNotNull(schedule, "schedule cannot be null");
-    Preconditions.checkNotNull(dependencies, "dependency cannot be null");
-    Preconditions.checkNotNull(maxWaitDuration, "max wait time cannot be null");
-    Preconditions.checkArgument(maxWaitDuration.toMinutes() >= 1, "max wait time should be "
-        + "longer than 1 min");
+  public FlowTrigger(final CronSchedule schedule,
+      final List<FlowTriggerDependency> dependencies, final Duration maxWaitDuration) {
+    Preconditions.checkArgument(schedule != null);
+    Preconditions.checkArgument(dependencies != null);
+    Preconditions.checkArgument(maxWaitDuration != null);
+    Preconditions.checkArgument(!maxWaitDuration.isNegative());
     validateDependencies(dependencies);
     this.schedule = schedule;
-    final ImmutableMap.Builder builder = new Builder();
-    dependencies.forEach(dep -> builder.put(dep.getName(), dep));
-    this.dependencies = builder.build();
+    this.dependencies = Collections.unmodifiableList(dependencies);
     this.maxWaitDuration = maxWaitDuration;
   }
 
@@ -68,14 +61,6 @@ public class FlowTrigger implements Serializable {
       Preconditions.checkArgument(seen.add(dep.getName()), String.format("duplicate dependency"
           + ".name %s found, dependency.name should be unique", dep.getName()));
     }
-  }
-
-  @Override
-  public String toString() {
-    return "FlowTrigger{" +
-        "schedule=" + this.schedule +
-        ", maxWaitDurationInMins=" + this.maxWaitDuration.toMinutes() +
-        "\n " + StringUtils.join(this.dependencies.values(), "\n") + '}';
   }
 
   /**
@@ -98,12 +83,17 @@ public class FlowTrigger implements Serializable {
     validateDepDefinitionUniqueness(dependencies);
   }
 
-  public FlowTriggerDependency getDependencyByName(final String name) {
-    return this.dependencies.get(name);
+  @Override
+  public String toString() {
+    return "FlowTrigger{" +
+        "dependencies=" + this.dependencies +
+        ", schedule=" + this.schedule +
+        ", maxWaitDuration=" + this.maxWaitDuration +
+        '}';
   }
 
-  public Collection<FlowTriggerDependency> getDependencies() {
-    return this.dependencies.values();
+  public List<FlowTriggerDependency> getDependencies() {
+    return this.dependencies;
   }
 
   public Duration getMaxWaitDuration() {

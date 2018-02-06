@@ -17,7 +17,6 @@
 package azkaban.project;
 
 import com.google.common.base.Preconditions;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
 import org.apache.commons.lang.StringUtils;
@@ -27,7 +26,7 @@ import org.apache.commons.lang.StringUtils;
  * It couldn't be changed once gets constructed.
  * It will be used to create running dependency instance.
  */
-public class FlowTriggerDependency implements Serializable {
+public class FlowTriggerDependency {
 
   private final Map<String, String> props;
   private final String name;
@@ -64,9 +63,9 @@ public class FlowTriggerDependency implements Serializable {
   @Override
   public String toString() {
     return "FlowTriggerDependency{" +
-        "name='" + this.name + '\'' +
+        "props=" + this.props +
+        ", name='" + this.name + '\'' +
         ", type='" + this.type + '\'' +
-        ", props=" + this.props +
         '}';
   }
 }
